@@ -1,4 +1,5 @@
 from rest_framework import generics
+from hg_api.permissions import IsOwnerOrReadOnly
 from .models import Profile
 from .serializers import ProfileSerializer
 
@@ -13,7 +14,9 @@ class ProfileList(generics.ListAPIView):
 
 class ProfileDetail(generics.RetrieveUpdateAPIView):
     """
-    Retrieve or update a profile.
+    Retrieve a profile given an id,
+    and update a profile given an authorized user.
     """
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
+    permission_classes = [IsOwnerOrReadOnly]
