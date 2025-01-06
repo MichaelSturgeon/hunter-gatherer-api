@@ -9,3 +9,11 @@ class ProductList(generics.ListAPIView):
     """
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+
+
+class ProductDetail(generics.ListAPIView):
+    """
+    Retrieve a product given a valid id.
+    """
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
