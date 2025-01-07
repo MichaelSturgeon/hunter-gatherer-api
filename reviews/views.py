@@ -1,4 +1,4 @@
-from rest_framework import generics
+from rest_framework import generics, filters
 from hg_api.permissions import IsOwnerOrReadOnly
 from .models import Review
 from .serializers import ReviewSerializer
@@ -8,8 +8,16 @@ class ReviewList(generics.ListAPIView):
     """
     List all reviews.
     """
-    queryset = Review.objects.all()
+    queryset = Review.objects.all().order_by('-created_at')
     serializer_class = ReviewSerializer
+
+    filter_backends = [
+        filters.OrderingFilter
+    ]
+    ordering_fields = [
+        'owner__username',
+        'rating',
+    ]
 
 
 class ReviewDetail(generics.RetrieveUpdateAPIView):
