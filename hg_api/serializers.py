@@ -4,6 +4,10 @@ from rest_framework import serializers
 
 
 class CurrentUserSerializer(UserDetailsSerializer):
+    """
+    Serializes data for User model,allowing JSON to be rendered.
+    Related to :model:`User`.
+    """
     profile_id = serializers.ReadOnlyField(source='profile.id')
     profile_image = serializers.ReadOnlyField(
         source='profile.profile_image.url')
