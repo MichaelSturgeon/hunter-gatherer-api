@@ -1,9 +1,14 @@
+# Imported files and packages
 from django.contrib.humanize.templatetags.humanize import naturaltime
 from rest_framework import serializers
 from .models import Product
 
 
 class ProductSerializer(serializers.ModelSerializer):
+    """
+    Serializes data for Product model,allowing JSON to be rendered.
+    Related to :model:`Product`.
+    """
     reviews_count = serializers.ReadOnlyField()
     updated_at = serializers.SerializerMethodField()
 

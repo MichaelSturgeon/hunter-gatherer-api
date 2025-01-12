@@ -1,3 +1,4 @@
+# Imported files and packages
 from django.db.models import Count
 from rest_framework import generics, filters
 from .models import Product
@@ -6,7 +7,8 @@ from .serializers import ProductSerializer
 
 class ProductList(generics.ListAPIView):
     """
-    List all products.
+    Render all products in a paginated list.
+    Related to :model:`Product`.
     """
     queryset = Product.objects.annotate(
         reviews_count=Count('review', distinct=True)
@@ -26,6 +28,7 @@ class ProductList(generics.ListAPIView):
 class ProductDetail(generics.RetrieveAPIView):
     """
     Retrieve a product given a valid id.
+    Related to :model:`Product`.
     """
     queryset = Product.objects.annotate(
         reviews_count=Count('review', distinct=True)

@@ -1,7 +1,11 @@
+# Imported files and packages
 from django.db import models
 
 
 class Product(models.Model):
+    """
+    Stores a instence of a product.
+    """
     name = models.CharField(max_length=200, blank=False, unique=True)
     description = models.CharField(max_length=800, blank=False)
     price = models.DecimalField(max_digits=6, decimal_places=2, blank=False)
