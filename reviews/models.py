@@ -1,9 +1,15 @@
+# Imported files and packages
 from django.db import models
 from django.contrib.auth.models import User
 from products.models import Product
 
 
 class Review(models.Model):
+    """
+    Stores a instence of a review entry.
+    Related to :model:`auth.User`.
+    """
+    # Review rating variables
     RATING_CHOICES = (
         ('1', '1'),
         ('2', '2'),
