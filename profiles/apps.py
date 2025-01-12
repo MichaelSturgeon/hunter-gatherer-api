@@ -1,3 +1,4 @@
+# Imported files and packages
 from django.apps import AppConfig
 
 

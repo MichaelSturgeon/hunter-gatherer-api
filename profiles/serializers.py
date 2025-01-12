@@ -1,9 +1,14 @@
+# Imported files and packages
 from django.contrib.humanize.templatetags.humanize import naturaltime
 from rest_framework import serializers
 from .models import Profile
 
 
 class ProfileSerializer(serializers.ModelSerializer):
+    """
+    Serializes data for Profile model,allowing JSON to be rendered.
+    Related to :model:`Profile`.
+    """
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     reviews_made = serializers.ReadOnlyField()
@@ -18,7 +23,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         return naturaltime(obj.created_at)
 
     def get_updated_at(self, obj):
-        return naturaltime(obj.updated_at)    
+        return naturaltime(obj.updated_at)
 
     class Meta:
         model = Profile

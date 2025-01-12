@@ -1,3 +1,4 @@
+# Imported files and packages
 from django.db.models import Count
 from rest_framework import generics, filters
 from hg_api.permissions import IsOwnerOrReadOnly
@@ -7,7 +8,9 @@ from .serializers import ProfileSerializer
 
 class ProfileList(generics.ListAPIView):
     """
-    List all profiles. Profile creation is handled by django signals.
+    Render all profiles in a paginated list.
+    Profile creation is handled by django signals.
+    Related to :model:`Profile`.
     """
     queryset = Profile.objects.annotate(
         reviews_made=Count('owner__review', distinct=True)
@@ -28,6 +31,7 @@ class ProfileDetail(generics.RetrieveUpdateAPIView):
     """
     Retrieve a profile given an id,
     and update a profile given an authorized user.
+    Related to :model:`Profile`.
     """
     queryset = Profile.objects.annotate(
         reviews_made=Count('owner__review', distinct=True)

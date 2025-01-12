@@ -1,9 +1,14 @@
+# Imported files and packages
 from django.db import models
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 
 
 class Profile(models.Model):
+    """
+    Stores a instence of a profile.
+    Related to :model:`auth.User`.
+    """
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
