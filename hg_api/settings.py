@@ -54,7 +54,7 @@ DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
    os.environ.get('ALLOWED_HOST'),
-   '8000-michaelstur-huntergathe-ycl15jc5to2.ws.codeinstitute-ide.net',
+   '8000-michaelstur-huntergathe-eeplbhozand.ws.codeinstitute-ide.net',
    'hunter-gatherer-api-42e8d7d609ef.herokuapp.com',
    'localhost',
 ]
