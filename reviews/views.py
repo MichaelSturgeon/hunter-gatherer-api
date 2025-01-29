@@ -5,7 +5,7 @@ from .models import Review
 from .serializers import ReviewSerializer
 
 
-class ReviewList(generics.ListAPIView):
+class ReviewList(generics.ListCreateAPIView):
     """
     Renders all reviews in a paginated list.
     Related to :model:`Review`.
@@ -20,6 +20,9 @@ class ReviewList(generics.ListAPIView):
         'owner__username',
         'rating',
     ]
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
 
 class ReviewDetail(generics.RetrieveUpdateAPIView):
