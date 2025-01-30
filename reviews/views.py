@@ -25,7 +25,7 @@ class ReviewList(generics.ListCreateAPIView):
         serializer.save(owner=self.request.user)
 
 
-class ReviewDetail(generics.RetrieveUpdateAPIView):
+class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     Retrieve a review given an id,
     and update a review given an authorized user.
